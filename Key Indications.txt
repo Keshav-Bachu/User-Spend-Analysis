@@ -1,0 +1,49 @@
+﻿How much have you currently spent?
+	0: 0
+	1: Any payment
+
+How often do you play?
+	0: Scattered, no real patter or content based
+	1: Every other day
+	2: Every day
+
+What are your spending habits?
+	0: None (mark this if you don’t spend, it makes my life easier thanks!)
+	1: Impulsively during some banner you are trying for
+	2: Spend at the beginning of the month, or some periodic time
+
+When do you usually spend(orbs) on a banner? (just any given banner in general)
+	0: After scoping out the other banners near the time frame
+	1: In the first 3 days
+	2: Randomly whenever you have orbs (no pattern)
+	3: At the last 3 days of a banner's life time
+	4: Somewhere in the middle of a banner's lifetime
+
+How fast do you complete quests
+	0: Somewhere in the middle, complete them with other activities
+	1: Within the first 3 days, actively trying to complete them
+	2: Donâ€™t even complete quests most of the time
+
+How do you go about getting orb rewards
+	0: Completely get all orb rewards (aka tempest, best arena tier you can achieve, orb quests)
+	1: Get whatever you can with normal play (eg not training units specifically for 3 heros quests)
+	2: Don't really care about orb quests, just get whatever pops up here and there
+
+Have you let pity rates over 4.25 die?
+	0: Yes because you ran out of orbs
+	1: No, you've gotten lucky enough to break the pity rate naturally (without spending)
+	2: No you will buy more orbs to break the pity rate
+	3: Spent but was not able to break pity rate
+
+Orb prices have decreased by 15% for a week, will you buy?
+	0: No
+	1: Yes
+
+Your pity rate is 4.75 but this week orbs are 30% more expensive, will you buy?
+	0: No
+	1: Yes
+
+Your pity rate is at 4.75 but the one time deals are $40 (USD) for 83 orbs or $36 
+	0: No
+	1: $36 for 75 orbs
+	2: $40 (USD) for 83 orbs
