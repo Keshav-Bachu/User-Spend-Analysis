@@ -34,4 +34,32 @@ yDev = yData[:, boundary:]
 
 #Tensorflow function part
 #PredictUserSpending will have the full function that takes the X and Y array input numpy arrays
-params = PSpending.trainModel(xTrain, yTrain, [4, 1])
+params = PSpending.trainModel(xTrain, yTrain, [16,8,4,4,4,1])
+
+
+"""
+Reference to storing the numpy weights
+In [819]: N
+Out[819]: 
+array([[  0.,   1.,   2.,   3.],
+       [  4.,   5.,   6.,   7.],
+       [  8.,   9.,  10.,  11.]])
+
+In [820]: data={'N':N}
+
+In [821]: np.save('temp.npy',data)
+
+In [822]: data2=np.load('temp.npy')
+
+In [823]: data2
+Out[823]: 
+array({'N': array([[  0.,   1.,   2.,   3.],
+       [  4.,   5.,   6.,   7.],
+       [  8.,   9.,  10.,  11.]])}, dtype=object)
+    
+In [826]: data2[()]['N']
+Out[826]: 
+array([[  0.,   1.,   2.,   3.],
+       [  4.,   5.,   6.,   7.],
+       [  8.,   9.,  10.,  11.]])
+"""

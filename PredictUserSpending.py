@@ -53,7 +53,7 @@ def computeCost(finalZ, Y):
     logits = tf.transpose(finalZ)
     labels = tf.transpose(Y)
     
-    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits = logits, labels = labels))
+    cost = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits = logits, labels = labels))
     return cost
 
 def trainModel(xTest, yTest, networkShape,  learning_rate = 0.0001, itterations = 1500, print_Cost = True):
@@ -86,8 +86,21 @@ def trainModel(xTest, yTest, networkShape,  learning_rate = 0.0001, itterations 
             
             
         parameters = sess.run(placeholders)
-        prediction = tf.equal(tf.argmax(Zfinal), tf.argmax(yTest))
+        #tf.eval(Zfinal)
+        prediction = tf.equal(tf.greater(Zfinal, tf.constant(0.5)), tf.greater(Y, tf.constant(0.5)))
         accuracy = tf.reduce_mean(tf.cast(prediction, "float"))
-    
         print ("Train Accuracy:", accuracy.eval({X: xTest, Y: yTest}))
+        
+        
+        #Ztest = sess.run(Zfinal, feed_dict={X:xTest, Y: yTest})
+        #Ztest = Ztest >= 0.5
+        #prediction = Ztest - yTest
+        #prediction = np.abs(prediction)
+        #prediction = np.sum(prediction)/prediction.shape[1]
+        #print ("Train Accuracy:", 1 - prediction)
+        
+        #prediction = tf.equal(Zfinal, Y)
+        #accuracy = tf.reduce_mean(tf.cast(prediction, "float"))
+    
+        #print ("Train Accuracy:", accuracy.eval({X: xTest, Y: yTest}))
     return parameters
