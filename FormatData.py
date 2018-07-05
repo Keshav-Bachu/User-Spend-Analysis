@@ -27,10 +27,11 @@ xData = xData.T
 #Using a 90 - 10 split
 boundary = int(xData.shape[1] * 0.9)
 xTrain = xData[:, 0:boundary]
-YTrain = yData[:, 0:boundary]
+yTrain = yData[:, 0:boundary]
 
 xDev = xData[:, boundary:]
 yDev = yData[:, boundary:]
 
 #Tensorflow function part
 #PredictUserSpending will have the full function that takes the X and Y array input numpy arrays
+params = PSpending.trainModel(xTrain, yTrain, [4])
