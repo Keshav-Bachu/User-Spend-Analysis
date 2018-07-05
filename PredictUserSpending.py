@@ -13,7 +13,7 @@ import numpy as np
 def createPlaceholders(X, Y):
     Xshape = X.shape[0]
     Xplace = tf.placeholder(tf.float32, shape = (Xshape, None))
-    Yplace = tf.placeholder(tf.float32, shape = (1, None))
+    Yplace = tf.placeholder(tf.float32, shape = (1, None))  
     
     return Xplace, Yplace
 #Used to create the placeholders of float 32 with a given shape
@@ -39,7 +39,7 @@ def forwardProp(X, placeholders):
     pass_A = tf.nn.relu(pass_Z)
     
     #need to calculate the W and A porions of the code now
-    for i in range (1, totalLength - 1):
+    for i in range (1, totalLength):
         #First element needs the X version hence it has a seperate condition
         val_W = placeholders['W' + str(i + 1)]
         val_b = placeholders['b' + str(i + 1)]
@@ -69,7 +69,7 @@ def trainModel(xTest, yTest, networkShape,  learning_rate = 0.0001, itterations 
     placeholders = createVariables(networkShape)
     
     Zfinal = forwardProp(X, placeholders)
-    cost = computeCost(Zfinal, yTest)
+    cost = computeCost(Zfinal, Y)
     optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(cost)
     
     init = tf.global_variables_initializer()
@@ -80,14 +80,14 @@ def trainModel(xTest, yTest, networkShape,  learning_rate = 0.0001, itterations 
             _,temp_cost = sess.run([optimizer, cost], feed_dict={X:xTest, Y: yTest})
             
             if(itter % 100 == 0):
-                print("Current cost of the function after itteraton " + str(itter) + "is: " + str(cost))
+                print("Current cost of the function after itteraton " + str(itter) + " is: \t" + str(temp_cost))
                 
-            costs.append(cost)
+            costs.append(temp_cost)
             
             
-    parameters = sess.run(placeholders)
-    prediction = tf.equal(tf.argmax(Zfinal), tf.argmax(yTest))
-    accuracy = tf.reduce_mean(tf.cast(prediction, "float"))
+        parameters = sess.run(placeholders)
+        prediction = tf.equal(tf.argmax(Zfinal), tf.argmax(yTest))
+        accuracy = tf.reduce_mean(tf.cast(prediction, "float"))
     
-    print ("Train Accuracy:", accuracy.eval({X: xTest, Y: yTest}))
+        print ("Train Accuracy:", accuracy.eval({X: xTest, Y: yTest}))
     return parameters

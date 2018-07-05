@@ -34,4 +34,4 @@ yDev = yData[:, boundary:]
 
 #Tensorflow function part
 #PredictUserSpending will have the full function that takes the X and Y array input numpy arrays
-params = PSpending.trainModel(xTrain, yTrain, [4])
+params = PSpending.trainModel(xTrain, yTrain, [4, 1])
