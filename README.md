@@ -26,3 +26,21 @@ PredictUserSpending.py- Python file with the NN model used for this project (wri
 
 *.npy files           - Trained weights that can be used to predict on more data (instructions to load and use them within the code)
 
+## Built With
+Numpy                       - Used to store weights and format data
+
+Tensorflow-gpu/Tensorflow   - Used to build the model and train weights
+
+## Prerequisites
+Appropriate packages used within the project (most importantly Numpy and Tensorflow/Tensorflow-gpu)
+
+Python 3.6.5 or above (project built on 3.6.5, will most likely work with older versions, but recommended to use the newest version)
+
+
+## Usage/Deployment
+1.  Clone this repo to your local system
+
+2.  Open the FormatData.py file and run said file, the code will handel the rest
+
+## Author
+* Keshav Bachu
