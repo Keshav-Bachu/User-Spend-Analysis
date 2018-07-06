@@ -34,7 +34,7 @@ yDev = yData[:, boundary:]
 
 #Tensorflow function part
 #PredictUserSpending will have the full function that takes the X and Y array input numpy arrays
-params = PSpending.trainModel(xTrain, yTrain, [16,8,4,4,4,1])
+params = PSpending.trainModel(xTrain, yTrain, xDev, yDev, [16,8,4,4,4,1], itterations=4000)
 
 
 """
@@ -50,6 +50,8 @@ In [820]: data={'N':N}
 In [821]: np.save('temp.npy',data)
 
 In [822]: data2=np.load('temp.npy')
+          then use np.ndarray.tolist to get back dictionary of weights to input in again!
+          useful for retraining weights, for a controlled model
 
 In [823]: data2
 Out[823]: 

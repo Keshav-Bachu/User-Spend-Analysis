@@ -56,7 +56,7 @@ def computeCost(finalZ, Y):
     cost = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits = logits, labels = labels))
     return cost
 
-def trainModel(xTest, yTest, networkShape,  learning_rate = 0.0001, itterations = 1500, print_Cost = True):
+def trainModel(xTest, yTest,xDev, yDev,  networkShape,  learning_rate = 0.0001, itterations = 1500, print_Cost = True):
  
     ops.reset_default_graph()
     costs = []                      #used to graph the costs at the end for a visual overview/analysis
@@ -90,6 +90,7 @@ def trainModel(xTest, yTest, networkShape,  learning_rate = 0.0001, itterations 
         prediction = tf.equal(tf.greater(Zfinal, tf.constant(0.5)), tf.greater(Y, tf.constant(0.5)))
         accuracy = tf.reduce_mean(tf.cast(prediction, "float"))
         print ("Train Accuracy:", accuracy.eval({X: xTest, Y: yTest}))
+        print ("Test Accuracy:", accuracy.eval({X: xDev, Y: yDev}))
         
         
         #Ztest = sess.run(Zfinal, feed_dict={X:xTest, Y: yTest})
