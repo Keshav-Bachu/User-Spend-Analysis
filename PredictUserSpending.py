@@ -10,13 +10,20 @@ from tensorflow.python.framework import ops
 import matplotlib.pyplot as plt
 import math
 import numpy as np
+
+#Creates the placeholders for X and Y
+#Placeholders represent what will be placed as an input later on when generating the model, unknown number of examples
+#which allows one to evaluate as many examples as needed (minus things like memory limitations etc)
 def createPlaceholders(X, Y):
     Xshape = X.shape[0]
     Xplace = tf.placeholder(tf.float32, shape = (Xshape, None))
     Yplace = tf.placeholder(tf.float32, shape = (1, None))  
     
     return Xplace, Yplace
-#Used to create the placeholders of float 32 with a given shape
+
+#Used to create the variables of float 32 with a given shape
+#uses a network shape to create the required number of variables for the hidden layers
+#this should not be confused with the placeholders from X and Y 
 def createVariables(networkShape):
     placeholders = {}
     
@@ -26,6 +33,7 @@ def createVariables(networkShape):
     return placeholders
 
 
+#Forward propogation using a, relu and sigmoid function on respective layers (relu 1 - n-1 layer and sigmoid for n layer)
 def forwardProp(X, placeholders):
     #total number of parameters in the network, divided by 2 for the number of layers within it with X being 0
     totalLength = len(placeholders)/2
@@ -38,9 +46,7 @@ def forwardProp(X, placeholders):
     pass_Z = tf.matmul(val2W, val1) + val2b
     pass_A = tf.nn.relu(pass_Z)
     
-    #need to calculate the W and A porions of the code now
     for i in range (1, totalLength):
-        #First element needs the X version hence it has a seperate condition
         val_W = placeholders['W' + str(i + 1)]
         val_b = placeholders['b' + str(i + 1)]
         
@@ -49,6 +55,7 @@ def forwardProp(X, placeholders):
             
     return pass_Z
 
+#Cost function for this sigmoid network
 def computeCost(finalZ, Y):
     logits = tf.transpose(finalZ)
     labels = tf.transpose(Y)
@@ -56,6 +63,11 @@ def computeCost(finalZ, Y):
     cost = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits = logits, labels = labels))
     return cost
 
+#Training the model, X and Y inputs for training and testing NN
+#Network shape - dictates the shape of the network; given as a list
+#Learning rate - step size of backprop
+#iterations -  Number of iterations of NN
+#print_cost - controles if cost is printed every 100 iterations
 def trainModel(xTest, yTest,xDev, yDev,  networkShape,  learning_rate = 0.0001, itterations = 1500, print_Cost = True):
  
     ops.reset_default_graph()
@@ -68,10 +80,13 @@ def trainModel(xTest, yTest,xDev, yDev,  networkShape,  learning_rate = 0.0001, 
     X, Y = createPlaceholders(xTest, yTest)
     placeholders = createVariables(networkShape)
     
+    #define how Z and cost should be calculated
     Zfinal = forwardProp(X, placeholders)
     cost = computeCost(Zfinal, Y)
     optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(cost)
     
+    
+    #Set global variables and create a session
     init = tf.global_variables_initializer()
     with tf.Session() as sess:
         sess.run(init)

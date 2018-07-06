@@ -16,7 +16,6 @@ import PredictUserSpending as PSpending
 
 #STEP 1: Data formatting
 #The data is stored as a CSV format and specific columns must be extracted for use
-
 yData = np.loadtxt(fname = 'UserData_Formatted.csv', delimiter = ',', usecols = [1], skiprows = 1)
 yData = yData.reshape(yData.shape[0], 1)    #reshape just in case to avoid rank (1) matrix
 yData = yData.T
@@ -34,6 +33,7 @@ yDev = yData[:, boundary:]
 
 #Tensorflow function part
 #PredictUserSpending will have the full function that takes the X and Y array input numpy arrays
+#output params has the trained weights that will be saved, params can be used later to predict different sets
 params = PSpending.trainModel(xTrain, yTrain, xDev, yDev, [16,8,4,4,4,1], itterations=4000)
 
 
