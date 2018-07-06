@@ -1,0 +1,23 @@
+Current cost of the function after itteraton 0 is:      2.4175127
+Current cost of the function after itteraton 100 is:    1.8828876
+Current cost of the function after itteraton 200 is:    1.4512364
+Current cost of the function after itteraton 300 is:    1.134517
+Current cost of the function after itteraton 400 is:    0.9441699
+Current cost of the function after itteraton 500 is:    0.8083956
+Current cost of the function after itteraton 600 is:    0.71386766
+Current cost of the function after itteraton 700 is:    0.64750344
+Current cost of the function after itteraton 800 is:    0.603121
+Current cost of the function after itteraton 900 is:    0.5710289
+Current cost of the function after itteraton 1000 is:   0.50685793
+Current cost of the function after itteraton 1100 is:   0.43524733
+Current cost of the function after itteraton 1200 is:   0.3784798
+Current cost of the function after itteraton 1300 is:   0.3520413
+Current cost of the function after itteraton 1400 is:   0.33712593
+Current cost of the function after itteraton 1500 is:   0.32554722
+Current cost of the function after itteraton 1600 is:   0.31512523
+Current cost of the function after itteraton 1700 is:   0.30599
+Current cost of the function after itteraton 1800 is:   0.29766652
+Current cost of the function after itteraton 1900 is:   0.28954542
+Current cost of the function after itteraton 2000 is:   0.2819153
+Train Accuracy: 0.9159159
+Test Accuracy: 0.9189189

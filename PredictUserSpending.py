@@ -106,7 +106,7 @@ def trainModel(xTest, yTest,xDev, yDev,  networkShape,  learning_rate = 0.0001, 
         accuracy = tf.reduce_mean(tf.cast(prediction, "float"))
         print ("Train Accuracy:", accuracy.eval({X: xTest, Y: yTest}))
         print ("Test Accuracy:", accuracy.eval({X: xDev, Y: yDev}))
-        
+        plt.plot(costs)
         
         #Ztest = sess.run(Zfinal, feed_dict={X:xTest, Y: yTest})
         #Ztest = Ztest >= 0.5
