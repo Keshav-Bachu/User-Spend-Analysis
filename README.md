@@ -7,9 +7,9 @@ Since there were only ~380 points of data, the project uses a 90 - 10 split for 
 
 Training on this data gave the following results:
 
-Train Set Accuracy    - 99.6997%
+Train Set Accuracy    - 92.19219%
 
-Dev Set Accuracy      - 100%
+Dev Set Accuracy      - 91.89189%
 
 This is a good start and more data would be helpful in letting this model grow some more allowing it to work with high accuracy on larger input data along with different types of people as an online community represents only a fraction of the the
 type of people who use the application.
